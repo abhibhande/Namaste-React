@@ -1,20 +1,16 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 
+//JSX (It transplied before it reaches to the JS) - PARCEL - BABEL
+//JSX => BABEL transplies it to React.createElement => ReactElement - JS Object =>HTMLElement(Rendering)
 
-const parent=React.createElement("div",{id:"parent"},
-    [React.createElement("div",{id:"child1"},
-        [React.createElement("h1",{},"This is chaild 1 h1 tag from react"),
-            React.createElement("h2",{},"This child 1 is h2 tag from react")
-        ]
-    ),
-    React.createElement("div",{id:"child2"},
-        [React.createElement("h1",{},"This is child 2 h1 tag from react"),
-            React.createElement("h2",{},"This is child 2 h2 tag from react")
-        ]
-    )]
-)
+// SO here when JSX code is written it the first converted into the ReactElement which is JavaScript Object and this conversion is called "transplied" and this is done by the BABEL(JavaScript Engine), When this is rendered using ReactDOM then it is converted into the HTML Element.
 
-const root=ReactDOM.createRoot(document.getElementById("root"));
+// BEBEL uses the Token identification to find which part of the code is JSX and needed to convert into the React element
 
-root.render(parent);
+const heading = <h1>This is React code from JSX</h1>;
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(heading);
