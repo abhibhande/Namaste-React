@@ -1,0 +1,15 @@
+
+#Component Composition
+ --- It is like adding one component in another component
+ EX : 
+
+ const Title = ()=>{
+    return <h1>This is title</h1>
+ }
+
+ const Heading=()=>{
+    <div>
+        <Title/>
+        <h2>This is heading</h2>
+    </div>
+ }

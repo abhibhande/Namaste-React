@@ -1,0 +1,30 @@
+ #React Component should be starting with Capital Word so that BABEL can understand whats going on.
+ If we used small letter to start component it willnot work
+
+ when we are rendering the React Component we should be using "< />"
+ Example :
+    < Reactcomponent />
+
+ This for BABEL to understand that there is somewhere a component named "Reactcomponent" and it start searching
+
+ DEF : React component is a Simple Javascript function which return JSX code
+
+ Declaration
+ 1:
+    const Heading = () => {
+        return <div id="main">
+            <h1 id="heading">
+                This is Heading Component within the main div
+            </h1>
+        </div>;
+    };
+
+ 2:
+    const Heading = () => <div id="main"><h1 id="heading">This is Heading Component</h1></div>;
+
+ 3: For multiple Line
+    const Heading = () => (<div id="main">
+        <h1 id="heading">This is Heading Component</h1>
+    </div>
+    );
+
