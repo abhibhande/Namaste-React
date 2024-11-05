@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "./Card";
+import { ALL_RES_LINK } from "../utils/constants";
 import Shimmer from "./Shimmer";
 
 
@@ -16,7 +17,7 @@ const Body = () => {
     let originalData=[];
 
     useEffect( () => {
-        fetchData();
+         fetchData();
     },[] );
 
     const fetchData = async () => {
@@ -24,9 +25,9 @@ const Body = () => {
 
         const json = await data.json();
 
-        originalData = json.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-        setListofAllRestaurant(json.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setListofRestaurant(json.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        originalData = json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        setListofAllRestaurant(json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setListofRestaurant(json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         console.log(json);
     }
 

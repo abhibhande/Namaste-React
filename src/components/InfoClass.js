@@ -6,37 +6,42 @@ class InfoClass extends React.Component
     {
         super(props);
 
-        console.log(this.props.index + "Child constructor");
+        // console.log(this.props.index + "Child constructor");
 
         // State variable in Class Based component
         this.state = {
-            count : 1,
-            count2 : 2,
+            avatar : "https://avatars.githubusercontent.com/u/68599334?s=400&u=43c526a9aa9bd3f8b574a9075752044989c97201&v=4",
+            name : "Abhishek Bhande",
+            collage : "PCCOE",
+            mobile : 9089789089,
+            location : "Pune",
+
         }
 
     }
 
-    componentDidMount()
-    {
-        console.log(this.props.index + "Child component Did Mount");
-    }
+    // async componentDidMount()
+    // {
+    //     // console.log(this.props.index + "Child component Did Mount");
+
+    //     //Doing API call to fetch data from my this GitHub Account
+
+    //     const data= await fetch("https://api.github.com/user");
+    //     const json= await data.json();
+    //     console.log(json);
+    // }
 
     render()
     {
-        console.log(this.props.index + "Child Render");
+        const {avatar,name,collage,location,mobile} = this.state;
+
         return (
         <div className="about-info-card">
-            <h2>Count : {this.state.count}</h2>
-            <button onClick={()=>{
-                this.setState({
-                    count : this.state.count + 1,
-                    // count2 : this.state.count2 + 1,   
-                })
-            }}>Increase Count</button>
-            <h5>Name : {this.props.name}</h5>
-            <h5>Mobile No : 9078567890</h5>
-            <h5>Address : Pune, India</h5>
-            <h5>Collage : PCCOE</h5>
+            <img src={avatar}/>
+            <h5>Name : {name}</h5>
+            <h5>Mobile No : {mobile}</h5>
+            <h5>Address : {location}</h5>
+            <h5>Collage : {collage}</h5>
         </div>
         );
     }

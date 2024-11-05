@@ -7,16 +7,16 @@ class About extends Component
     constructor(props)
     {
         super(props);
-        console.log("This is Parent Constructor");
+        // console.log("This is Parent Constructor");
     }
 
     componentDidMount()
     {
-        console.log("Parent Component Did Mount");
+        // console.log("Parent Component Did Mount");
     }
 
     render(){
-        console.log("Parent Render");
+        // console.log("Parent Render");
         return (
             <div>
                 <h1>
@@ -25,8 +25,8 @@ class About extends Component
                 <h2>
                     This is About us Page
                     <InfoClass name={"Abhishek Bhande From Class"} location = {"Pune"} index ={"First"}/>
-                    <InfoClass name={"Abhishek Bhande From Class"} location = {"Pune"} index ={"Second"}/>
-                    <InfoClass name={"Abhishek Bhande From Class"} location = {"Pune"} index ={"third"}/>
+                    {/* <InfoClass name={"Abhishek Bhande From Class"} location = {"Pune"} index ={"Second"}/>
+                    <InfoClass name={"Abhishek Bhande From Class"} location = {"Pune"} index ={"third"}/> */}
                 </h2>
             </div>
         )
