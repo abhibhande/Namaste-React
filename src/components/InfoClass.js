@@ -37,11 +37,11 @@ class InfoClass extends React.Component
 
         return (
         <div className="about-info-card">
-            <img src={avatar}/>
-            <h5>Name : {name}</h5>
-            <h5>Mobile No : {mobile}</h5>
-            <h5>Address : {location}</h5>
-            <h5>Collage : {collage}</h5>
+            <img className="w-[200px] text-center rounded-md mt-3 mx-auto" src={avatar}/>
+            <h5 className="text-lg font-semibold" >Name : {name}</h5>
+            <h5 className="text-lg font-semibold">Mobile No : {mobile}</h5>
+            <h5 className="text-lg font-semibold">Address : {location}</h5>
+            <h5 className="text-lg font-semibold">Collage : {collage}</h5>
         </div>
         );
     }

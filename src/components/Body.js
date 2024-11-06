@@ -14,19 +14,16 @@ const Body = () => {
     const [ListofRestaurant,setListofRestaurant] = useState([]);
     const [ListofAllRestaurant,setListofAllRestaurant] = useState([]);
     const [searchTxt,setsearchTxt] = useState(""); 
-    
-    let originalData=[];
 
     useEffect( () => {
          fetchData();
     },[] );
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const data = await fetch(ALL_RES_LINK);
 
         const json = await data.json();
 
-        originalData = json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
         setListofAllRestaurant(json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setListofRestaurant(json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         console.log(json);
@@ -37,25 +34,26 @@ const Body = () => {
         return <h1> OOPS!!! Looks like Your Internet Connection is gone. Please Connect To Internet.</h1>
     }
 
-    return (ListofRestaurant?.length) === 0 ? <Shimmer /> : ( <div>
+    return (ListofAllRestaurant?.length) === 0 ? <Shimmer /> : ( <div>
 
-        <div className="search">
-            <input type="text" className="search-inp" value={searchTxt} onChange={(e)=> setsearchTxt(e.target.value)}/> 
-            <input type ="button" className="search-btn" value="Search" onClick={()=>{
+        <div className="search p-3">
+            <input type="text" className="search px-[3px] mr-4 border-2 border-slate-600 rounded-sm" value={searchTxt} onChange={(e)=> setsearchTxt(e.target.value)}/> 
+            <input type ="button" className="search-btn px-2 border-[2px] rounded-[5px] border-green-500 hover:bg-green-500" value="Search" onClick={()=>{
                 //  = ListofRestaurant.filter((x)=>x.info.name.toLowerCase.includes(searchTxt.toLowerCase));
                 // setListofRestaurant(restaurantList);  
                 let restaurantList = ListofAllRestaurant?.filter((x)=> x.info.name.toLowerCase().includes(searchTxt.toLowerCase()));
                 setListofRestaurant(restaurantList);
 
             }}/>
-        </div>
 
-            <input type="button" className="top-rated-button" value="Top reated" onClick={
+            <input type="button" className="px-2 mx-4 border-[2px] rounded-[5px] border-green-500 hover:bg-green-500" value="Top reated" onClick={
             ()=>{
                 const NewRestaurantList = ListofRestaurant?.filter((resList) => resList.info.avgRating > 4.0);
                 setListofRestaurant(NewRestaurantList);
-            } }></input>
-        <div className="body">
+            } }/>
+        </div>
+
+        <div className="body flex flex-wrap">
             {ListofRestaurant?.map((restaurant) => <Link to={"/restaurant/" + restaurant.info.id} className="link"> <Card resData = {restaurant} /> </Link>)}
         </div>
     </div>);
