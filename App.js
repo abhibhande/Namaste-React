@@ -1,9 +1,7 @@
-import React from "react"
+import React, { lazy, Suspense } from "react"
 import ReactDOM from "react-dom/client"
 import Heading from "./src/components/Header";
-import Search from "./src/components/Search";
 import Body from "./src/components/Body";
-import About from "./src/components/About";
 import Contact from "./src/components/Contact";
 import Error from "./src/components/error";
 import { createBrowserRouter,Outlet,RouterProvider } from "react-router-dom";
@@ -11,11 +9,15 @@ import RestaurantCard from "./src/components/RestaurantCard";
 
 const Main = () => {
     return (<div className="main">
-        <Heading/>
+        <Heading />
         <Outlet />
     </div>
     );
 };
+
+const About = lazy(()=>{
+    return import("./src/components/About");
+})
 
 const router = createBrowserRouter([
     {
@@ -28,7 +30,9 @@ const router = createBrowserRouter([
             },
             {
                 path: "/about",
-                element: <About />
+                element: <Suspense fallback={<h1>Loading</h1>}>
+                    <About />
+                    </Suspense>,
             },
             {
                 path: "/contact",

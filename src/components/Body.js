@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Card from "./Card";
 import { ALL_RES_LINK } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 
@@ -25,10 +26,15 @@ const Body = () => {
 
         const json = await data.json();
 
-        originalData = json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-        setListofAllRestaurant(json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setListofRestaurant(json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        originalData = json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        setListofAllRestaurant(json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setListofRestaurant(json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         console.log(json);
+    }
+
+    if(useOnlineStatus() === false)
+    {
+        return <h1> OOPS!!! Looks like Your Internet Connection is gone. Please Connect To Internet.</h1>
     }
 
     return (ListofRestaurant?.length) === 0 ? <Shimmer /> : ( <div>
